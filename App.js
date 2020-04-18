@@ -96,17 +96,38 @@ export default class App extends Component {
     )
   }
 
+  Muscles=() =>{
+    return(
+      <View style={styles.container}>
+        <Header
+          homeSelected={this.state.homeSelected} 
+          goHome={this.homeSelected}/>
+        
+        <Text>Muscles Screen</Text>
+
+        <View style={styles.navButtons}>
+            <Footer
+            homeTrue={this.state.homeSelected}
+            muscleTrue={this.state.muscleSelected} 
+            messageTrue={this.state.messageSelected}
+            homePressed={this.homeSelected}
+            musclePressed={this.muscleSelected}
+            messagePressed={this.messageSelected}/>
+          </View>
+      </View>
+    )
+  }
+
   render(){
     return (
       <NavigationContainer>
-        
-
           <Stack.Navigator
            initialRouteName="Home"
            screenOptions={{
              headerShown:false
            }}>
             <Stack.Screen name="Home" component={this.Home}/>
+            <Stack.Screen name="Muscles" component={this.Muscles}/>
           </Stack.Navigator>
           
       </NavigationContainer>

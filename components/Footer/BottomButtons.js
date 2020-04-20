@@ -1,29 +1,15 @@
 import React from 'react';
 import { StyleSheet, View, Image,TouchableOpacity } from 'react-native';
-import {useNavigation} from '@react-navigation/native'
 import homeIcon from '../../assets/images/navigation/home.png'
 import homeBlack from '../../assets/images/navigation/homeBlack.png'
 import muscleIcon from '../../assets/images/navigation/muscleWhite.png'
 import muscleBlack from '../../assets/images/navigation/muscle.png'
 import messageIcon from '../../assets/images/navigation/messageWhite.png'
 import messageBlack from '../../assets/images/navigation/messageFilled.png'
-import { white } from 'ansi-colors';
 
 export default function Footer(props){
 
     let btns
-
-    const navigation = useNavigation();
-
-    const changeToMuscle = () =>{
-        navigation.navigate('Muscles');
-        props.musclePressed();
-    }
-
-    const changeToHome = () =>{
-        navigation.navigate('Home');
-        props.homePressed();
-    }
 
     if(props.homeTrue){
         btns =
@@ -33,7 +19,7 @@ export default function Footer(props){
                         <Image style={styles.img} source={homeBlack}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button} onPress={changeToMuscle}>
+                    <TouchableOpacity style={styles.button} onPress={props.musclePressed}>
                         <Image style={styles.img} source={muscleIcon}
                         />
                     </TouchableOpacity>
@@ -48,7 +34,7 @@ export default function Footer(props){
         btns =
         <View style={styles.container}>
             <View style={styles.bottomButtons}>
-                <TouchableOpacity onPress={changeToHome}>
+                <TouchableOpacity onPress={props.homePressed}>
                     <Image style={styles.img} source={homeIcon}
                     />
                 </TouchableOpacity>
@@ -66,11 +52,11 @@ export default function Footer(props){
         btns =
         <View style={styles.container}>
             <View style={styles.bottomButtons}>
-                <TouchableOpacity onPress={changeToHome}>
+                <TouchableOpacity onPress={props.homePressed}>
                     <Image style={styles.img} source={homeIcon}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={changeToMuscle}>
+                <TouchableOpacity onPress={props.musclePressed}>
                     <Image style={styles.img} source={muscleIcon}
                     />
                 </TouchableOpacity>

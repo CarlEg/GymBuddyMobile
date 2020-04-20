@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet,Image,TouchableOpacity} from 'react-native';
-import {useNavigation} from '@react-navigation/native'
 import {Header} from 'react-native-elements';
 import logo from '../../assets/images/Logo.png';
 import backArrow from '../../assets/images/whiteArrow.png'
@@ -8,13 +7,6 @@ import backArrow from '../../assets/images/whiteArrow.png'
 export default function TopBar(props){
 
     let header = null;
-
-    const navigation = useNavigation();
-
-    const changeToHome = () =>{
-        navigation.navigate('Home');
-        props.goHome();
-    }
 
     if(props.homeSelected){
         header =(
@@ -35,7 +27,7 @@ export default function TopBar(props){
                     height:45,
                 }}
                 leftComponent={
-                    <TouchableOpacity onPress={changeToHome}> 
+                    <TouchableOpacity onPress={props.goHome}> 
                         <Image style={styles.arrow} 
                             source={backArrow}/> 
                     </TouchableOpacity>}

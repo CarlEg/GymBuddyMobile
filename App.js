@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 import { StyleSheet,View,Text} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
 import Footer from './components/Footer/BottomButtons';
 import Header from './components/header/header';
 import MuscleButton from './components/MuscleButton/MuscleButton';
 import Time from './components/Time/Time';
 import Muscles from './components/Muscles/Muscles'
 
-const Stack = createStackNavigator();
 
 export default class App extends Component {
 
@@ -308,79 +305,66 @@ export default class App extends Component {
     })
   }
 
-  Home=() =>{
-    return(
-      <View style={styles.container}>
-        <Header
-          homeSelected={this.state.homeSelected} 
-          goHome={this.homeSelected}/>
-        <View style={styles.time}>
-          <Time/>
-        </View>
-        <View style={styles.muscleButtonView}>
-          <MuscleButton
-            muscleSelected={this.muscleSelected}/>
-        </View>
-        <View style={styles.navButtons}>
-            <Footer
-            homeTrue={this.state.homeSelected}
-            muscleTrue={this.state.muscleSelected} 
-            messageTrue={this.state.messageSelected}
-            homePressed={this.homeSelected}
-            musclePressed={this.muscleSelected}
-            messagePressed={this.messageSelected}/>
-          </View>
-      </View>
-    )
-  }
-
-  Muscles=() =>{
-    return(
-      <View style={styles.container}>
-        <Header
-          homeSelected={this.state.homeSelected} 
-          goHome={this.homeSelected}/>
-        
-        <Muscles muscles={this.state.muscles} 
-         chestSelect={this.chestSelected} 
-         absSelect={this.absSelected}
-         legsSelect={this.legsSelected}
-         bicepsSelect={this.bicepsSelected}
-         latsSelect={this.latsSelected} 
-         backSelect={this.backSelected} 
-         back ={this.state.back} 
-         frontSelect={this.frontSelected} 
-         selected={this.state.selected} 
-         checkEmpty={this.state.arrayIsEmpty}
-         savePreset={this.savePreset} 
-         findClicked={this.messageSelected}/>
-
-        <View style={styles.navButtons}>
-            <Footer
-            homeTrue={this.state.homeSelected}
-            muscleTrue={this.state.muscleSelected} 
-            messageTrue={this.state.messageSelected}
-            homePressed={this.homeSelected}
-            musclePressed={this.muscleSelected}
-            messagePressed={this.messageSelected}/>
-          </View>
-      </View>
-    )
-  }
-
   render(){
-    return (
-      <NavigationContainer>
-          <Stack.Navigator
-           initialRouteName="Home"
-           screenOptions={{
-             headerShown:false
-           }}>
-            <Stack.Screen name="Home" component={this.Home}/>
-            <Stack.Screen name="Muscles" component={this.Muscles}/>
-          </Stack.Navigator>
-      </NavigationContainer>
-    );
+    if(this.state.homeSelected){
+      return(
+        <View style={styles.container}>
+          <Header
+            homeSelected={this.state.homeSelected} 
+            goHome={this.homeSelected}/>
+
+          <View style={styles.time}>
+            <Time/>
+          </View>
+          <View style={styles.muscleButtonView}>
+            <MuscleButton
+            muscleSelected={this.muscleSelected}/>
+          </View>
+
+          <View style={styles.navButtons}>
+            <Footer
+            homeTrue={this.state.homeSelected}
+            muscleTrue={this.state.muscleSelected} 
+            messageTrue={this.state.messageSelected}
+            homePressed={this.homeSelected}
+            musclePressed={this.muscleSelected}
+            messagePressed={this.messageSelected}/>
+          </View>
+          </View>
+        )
+      }else if(this.state.muscleSelected){
+        return(
+          <View style={styles.container}>
+            <Header
+            homeSelected={this.state.homeSelected} 
+            goHome={this.homeSelected}/>
+
+            <Muscles muscles={this.state.muscles} 
+            chestSelect={this.chestSelected} 
+            absSelect={this.absSelected}
+            legsSelect={this.legsSelected}
+            bicepsSelect={this.bicepsSelected}
+            latsSelect={this.latsSelected} 
+            backSelect={this.backSelected} 
+            back ={this.state.back} 
+            frontSelect={this.frontSelected} 
+            selected={this.state.selected} 
+            checkEmpty={this.state.arrayIsEmpty}
+            savePreset={this.savePreset} 
+            findClicked={this.messageSelected}/>
+
+            <View style={styles.navButtons}>
+            <Footer
+            homeTrue={this.state.homeSelected}
+            muscleTrue={this.state.muscleSelected} 
+            messageTrue={this.state.messageSelected}
+            homePressed={this.homeSelected}
+            musclePressed={this.muscleSelected}
+            messagePressed={this.messageSelected}/>
+            </View>
+          </View>
+        )
+      }
   }
 }
 
@@ -398,9 +382,9 @@ const styles = StyleSheet.create({
   },
   muscleButtonView:{
     flex:1,
-    justifyContent:'center',
+    top:70
   },
   time:{
-    top:15
+    top:15,
   }
 });

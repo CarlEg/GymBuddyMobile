@@ -1,6 +1,7 @@
 import React from 'react';
-import {View,Button,Text,TouchableOpacity,StyleSheet,Image} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {View,Text,TouchableOpacity,StyleSheet,Image} from 'react-native';
+import {useFonts} from '@use-expo/font';
+import {AppLoading} from 'expo';
 
 import personFront from '../../assets/images/muscles/front_of_person.png';
 import chest from '../../assets/images/muscles/chest.png';
@@ -30,12 +31,6 @@ export default function Muscles(props){
     let image = personFront;
     let screen = null;
     let array = props.selected.sort()
-    const navigation = useNavigation()
-
-    const goToBack = () =>{
-        props.backSelect();
-        navigation.navigate('Muscles')
-    }
 
     switch (true) {
         case props.back:
@@ -129,43 +124,52 @@ export default function Muscles(props){
             break;
     }
 
-    // if(props.back){
-    //     screen =(
-    //         <div >
-    //         <button className={classes.latsR} onClick={props.latsSelect} />
-    //         <button className={classes.latsL} onClick={props.latsSelect} />
-    //         </div>
-    //     )
-    // }else{
-    //     screen=(
-    //         <div >
-    //         <button className={classes.chest} onClick={props.chestSelect} />
-    //         <button className={classes.abs} onClick={props.absSelect} />
-    //         <button className={classes.legsL} onClick={props.legsSelect} />
-    //         <button className={classes.legsR} onClick={props.legsSelect} />
-    //         <button className={classes.bicepsL} onClick={props.bicepsSelect} />
-    //         <button className={classes.bicepsR} onClick={props.bicepsSelect} />
-    // </div>
-    // )
-    // }
+    if(props.back){
+        screen =(
+            <View >
+            <TouchableOpacity style={styles.lLat} onPress={props.latsSelect} />
+            <TouchableOpacity style={styles.rLat} onPress={props.latsSelect} />
+            </View>
+        )
+    }else{
+        screen=(
+            <View >
+            <TouchableOpacity style={styles.chest} onPress={props.chestSelect} />
+            <TouchableOpacity style={styles.abs} onPress={props.absSelect} />
+            <TouchableOpacity style={styles.lLeg} onPress={props.legsSelect} />
+            <TouchableOpacity style={styles.rLeg} onPress={props.legsSelect} />
+            <TouchableOpacity style={styles.lBicep} onPress={props.bicepsSelect} />
+            <TouchableOpacity style={styles.rBicep} onPress={props.bicepsSelect} />
+    </View>
+    )
+    }
 
+    let [fontsLoaded] = useFonts({
+        'Impact': require('../../assets/fonts/Impact.otf'),
+    })
+
+    if (!fontsLoaded) {
+        return <AppLoading />;
+      } else {
     return(
         <View >
             <View style={styles.topButtons}>
                 <TouchableOpacity style={props.back ? styles.front : styles.frontClicked} 
                     onPress={props.frontSelect}>
-                    <Text>Front Muscles</Text>
+                    <Text style={props.back ? styles.buttonTextWhite : styles.buttonTextBlack}>Front</Text>
+                    <Text style={props.back ? styles.buttonTextWhite : styles.buttonTextBlack}>Muscles</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={props.back ? styles.backClicked : styles.back} 
                     onPress={props.backSelect}>
-                    <Text>Back Muscles</Text>
+                    <Text style={props.back ? styles.buttonTextBlack : styles.buttonTextWhite}>Back</Text>
+                    <Text style={props.back ? styles.buttonTextBlack : styles.buttonTextWhite}>Muscles</Text>
                 </TouchableOpacity>
             </View>
-            {props.checkEmpty ? null: <Text>{array.join(" ")}</Text>}
+            {props.checkEmpty ? null: <Text style={styles.list}>{array.join(" ")}</Text>}
             <Image style={styles.image}
             source={image} 
             alt="Front facing person muscles" />
-            {/* {screen} */}
+            {screen}
             {<TouchableOpacity style={props.checkEmpty ? styles.presetGrey: styles.preset} 
             onClick={props.checkEmpty ? null : props.savePreset} >
             <Text>Save Muscles</Text>
@@ -176,6 +180,7 @@ export default function Muscles(props){
             </TouchableOpacity>}
         </View>
         )
+    }
 }
 
 const styles = StyleSheet.create({
@@ -185,21 +190,134 @@ const styles = StyleSheet.create({
     },
     front:{
         backgroundColor:'#8C030E',
-       
+        width:100,
+        right:40,
+        top:20,
+        borderStyle:'solid',
+        borderRadius:10,
+        borderWidth:5,
+        borderColor:'#6F6F6F',
+        alignItems:'center'
     },
     frontClicked:{
         backgroundColor:'salmon',
         width:100,
         right:40,
-        top:20
+        top:20,
+        borderStyle:'solid',
+        borderRadius:10,
+        borderWidth:5,
+        borderColor:'#6F6F6F',
+        alignItems:'center'
     },
     back:{
         backgroundColor:'#8C030E',
         width: 100,
-        flexDirection:'row'
+        left:40,
+        top:20,
+        borderStyle:'solid',
+        borderRadius:10,
+        borderWidth:5,
+        borderColor:'#6F6F6F',
+        alignItems:'center'
+    },
+    backClicked:{
+        backgroundColor:'salmon',
+        width: 100,
+        left:40,
+        top:20,
+        borderStyle:'solid',
+        borderRadius:10,
+        borderWidth:5,
+        borderColor:'#6F6F6F',
+        alignItems:'center'
     },
     image:{
+        top:10,
         height:400,
         width:190,
-    }
+    },
+    buttonTextWhite:{
+        color:'white',
+        fontFamily:'Impact',
+        fontSize:20,
+    },
+    buttonTextBlack:{
+        color:'black',
+        fontFamily:'Impact',
+        fontSize:20,
+    },
+    list:{
+        position:'absolute',
+        color:'white',
+        fontFamily:'Impact',
+        backgroundColor:'#8C030E',
+        flexDirection:'column'
+    },
+    chest:{
+        position:'absolute',
+        bottom:290,
+        left:60,
+        width:73,
+        height:35,
+        borderRadius:10,
+    },
+    abs:{
+        position:'absolute',
+        bottom:240,
+        left:78,
+        width:35,
+        height:50,
+        borderRadius:10,
+    },
+    lBicep:{
+        position:'absolute',
+        bottom:250,
+        left:35,
+        width:20,
+        height:50,
+        borderRadius:10,
+        transform:[{rotate:'20deg'}]
+    },
+    rBicep:{
+        position:'absolute',
+        bottom:250,
+        right:45,
+        width:20,
+        height:50,
+        borderRadius:10,
+        transform:[{rotate:'-20deg'}]
+    },
+    lLeg:{
+        position:'absolute',
+        bottom:110,
+        left:65,
+        width:28,
+        height:100,
+        borderRadius:10,
+    },
+    rLeg:{
+        position:'absolute',
+        bottom:110,
+        right:75,
+        width:28,
+        height:100,
+        borderRadius:10,
+    },
+    lLat:{
+        position:'absolute',
+        bottom:250,
+        left:60,
+        width:28,
+        height:60,
+        borderRadius:10,
+    },
+    rLat:{
+        position:'absolute',
+        bottom:250,
+        right:70,
+        width:28,
+        height:60,
+        borderRadius:10,
+    },
 })

@@ -1,0 +1,40 @@
+.preset div{
+    text-align: center;
+    position: relative;
+}
+
+.preset h2{
+    background-color: #8C030E;
+  /* border: 4px solid #6F6F6F;
+  border-radius: 10px; */
+  box-shadow: 0px 0px 5px black;
+  color: white;
+  height: inherit;
+  width: 150px;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 17px;
+  position: relative;
+  margin: auto;
+  top: 10px;
+}
+
+.pButton{
+    position: relative;
+    top:20px;
+ background-color: #8C030E;
+  border: 4px solid #6F6F6F;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px black;
+  color: white;
+  height: inherit;
+  width: inherit;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.pButton:hover{
+    background-color: #F25050;
+    color:black;
+}

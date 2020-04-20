@@ -2,6 +2,7 @@ import React from 'react';
 import {View,Text,TouchableOpacity,StyleSheet,Image} from 'react-native';
 import {useFonts} from '@use-expo/font';
 import {AppLoading} from 'expo';
+import Unorderedlist from 'react-native-unordered-list';
 
 import personFront from '../../assets/images/muscles/front_of_person.png';
 import chest from '../../assets/images/muscles/chest.png';
@@ -31,6 +32,13 @@ export default function Muscles(props){
     let image = personFront;
     let screen = null;
     let array = props.selected.sort()
+    let i;
+    for(i=0; i<array.length; i++){
+        if(!array[i].includes('\u2022')){
+            array[i] = '\u2022 ' + array[i];
+            array.sort();
+        }
+    }
 
     switch (true) {
         case props.back:
@@ -165,19 +173,23 @@ export default function Muscles(props){
                     <Text style={props.back ? styles.buttonTextBlack : styles.buttonTextWhite}>Muscles</Text>
                 </TouchableOpacity>
             </View>
-            {props.checkEmpty ? null: <Text style={styles.list}>{array.join(" ")}</Text>}
+            {props.checkEmpty ? null: <Text style={styles.list}>{array.join("\n")}</Text>}
             <Image style={styles.image}
             source={image} 
             alt="Front facing person muscles" />
             {screen}
+            <View style={styles.bottomButtons}>
             {<TouchableOpacity style={props.checkEmpty ? styles.presetGrey: styles.preset} 
             onClick={props.checkEmpty ? null : props.savePreset} >
-            <Text>Save Muscles</Text>
+            <Text style={props.checkEmpty ? styles.buttonTextGrey: styles.buttonTextWhite}>Save</Text>
+            <Text style={props.checkEmpty ? styles.buttonTextGrey: styles.buttonTextWhite}>Muscles</Text>
             </TouchableOpacity>}
             {<TouchableOpacity style={props.checkEmpty ? styles.findGrey: styles.find} 
             onClick={props.checkEmpty ? null : props.findClicked} >
-            <Text>Find buddy</Text>
+            <Text style={props.checkEmpty ? styles.buttonTextGrey: styles.buttonTextWhite}>Find</Text>
+            <Text style={props.checkEmpty ? styles.buttonTextGrey: styles.buttonTextWhite}>Buddy</Text>
             </TouchableOpacity>}
+            </View>
         </View>
         )
     }
@@ -186,6 +198,9 @@ export default function Muscles(props){
 const styles = StyleSheet.create({
     topButtons:{
         top:10,
+        flexDirection:'row',
+    },
+    bottomButtons:{
         flexDirection:'row',
     },
     front:{
@@ -232,6 +247,50 @@ const styles = StyleSheet.create({
         borderColor:'#6F6F6F',
         alignItems:'center'
     },
+    preset:{
+        backgroundColor:'#8C030E',
+        borderStyle:'solid',
+        right:40,
+        bottom:10,
+        width: 100,
+        borderRadius:10,
+        borderWidth:5,
+        borderColor:'#6F6F6F',
+        alignItems:'center'
+    },
+    presetGrey:{
+        backgroundColor:'#6F6F6F',
+        borderStyle:'solid',
+        right:40,
+        bottom:10,
+        width: 100,
+        borderRadius:10,
+        borderWidth:5,
+        borderColor:'#6F6F6F',
+        alignItems:'center'
+    },
+    find:{
+        backgroundColor:'#8C030E',
+        borderStyle:'solid',
+        left:40,
+        bottom:10,
+        width: 100,
+        borderRadius:10,
+        borderWidth:5,
+        borderColor:'#6F6F6F',
+        alignItems:'center'
+    },
+    findGrey:{
+        backgroundColor:'#6F6F6F',
+        borderStyle:'solid',
+        left:40,
+        bottom:10,
+        width: 100,
+        borderRadius:10,
+        borderWidth:5,
+        borderColor:'#6F6F6F',
+        alignItems:'center'
+    },
     image:{
         top:10,
         height:400,
@@ -247,12 +306,19 @@ const styles = StyleSheet.create({
         fontFamily:'Impact',
         fontSize:20,
     },
+    buttonTextGrey:{
+        color:'grey',
+        fontFamily:'Impact',
+        fontSize:20,
+    },
     list:{
         position:'absolute',
         color:'white',
+        top:100,
+        left:185,
         fontFamily:'Impact',
+        fontSize:20,
         backgroundColor:'#8C030E',
-        flexDirection:'column'
     },
     chest:{
         position:'absolute',

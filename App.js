@@ -7,6 +7,7 @@ import Time from './components/Time/Time';
 import Muscles from './components/Muscles/Muscles'
 import Preset from './components/PresetButton/PresetButton'
 import PresetHeading from './components/PresetHeading/PresetHeading'
+import Buddies from './components/Buddies/Buddies'
 
 
 export default class App extends Component {
@@ -279,7 +280,6 @@ export default class App extends Component {
     muscles.chest = false
     muscles.legs = false
     muscles.lats = false
-    console.log(this.state.selected)
     for(i=0; i<array.length; i++){
       if(array[i]==="Abs"){
         muscles.abs = true;
@@ -299,12 +299,15 @@ export default class App extends Component {
       }
     }
     this.setState({
+      selected:chosen,
+    })
+    this.setState({
       muscles:muscles,
       homeSelected: false,
       muscleSelected: true,
       messageSelected: false,
-      selected:chosen,
     })
+    console.log(this.state.selected)
   }
 
   render(){
@@ -377,7 +380,28 @@ export default class App extends Component {
             </View>
           </View>
         )
-      }
+      }else if(this.state.messageSelected){
+        return(
+        <View style={styles.container}>
+        <Header
+        homeSelected={this.state.homeSelected} 
+        goHome={this.homeSelected}/>
+
+        <View style={styles.buddies}>
+          <Buddies selected={this.state.selected}/>
+        </View>
+
+        <View style={styles.navButtons}>
+        <Footer
+        homeTrue={this.state.homeSelected}
+        muscleTrue={this.state.muscleSelected} 
+        messageTrue={this.state.messageSelected}
+        homePressed={this.homeSelected}
+        musclePressed={this.muscleSelected}
+        messagePressed={this.messageSelected}/>
+        </View>
+      </View>
+      )}
   }
 }
 
@@ -394,7 +418,7 @@ const styles = StyleSheet.create({
     justifyContent:'flex-end',
   },
   muscleButtonView:{
-    flex:1.5,
+    flex:1.75,
     top:50
   },
   time:{
@@ -403,4 +427,8 @@ const styles = StyleSheet.create({
   presetSection:{
     flex:1,
   },
+  buddies:{
+    flex:1,
+    top:30
+  }
 });

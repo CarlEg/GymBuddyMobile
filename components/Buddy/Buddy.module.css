@@ -1,0 +1,163 @@
+.Buddy{
+    height:280px;
+    width:200px;
+    background-color: white;
+    position: relative;
+    margin: auto;
+    top:10px;
+    border-radius: 15px;
+    border: 4px solid #8C030E;
+    box-shadow: 0px 0px 5px black;
+    display: inline-block;
+}
+
+.Buddy img{
+    height: 200px;
+    width: 200px;
+    position: relative;
+    top:0px;
+    border-radius: 10px;
+}
+
+.Buddy h4{
+    position: relative;
+    right:80px;
+    bottom:78px;
+    /* float: left; */
+}
+
+.Buddy ul{
+    position: relative;
+    /* float: left; */
+    bottom: 100px;
+    right:20px;
+}
+
+li span{
+    position: relative;
+    left: -50px;
+}
+
+.name{
+    color:white;
+    font-family: Impact, Charcoal, sans-serif;
+    position: relative;
+    /* float: left; */
+    text-align:left;
+    left:4px;
+    top:-56px;
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+
+.Buddy h2{
+    color:white;
+    font-size: 18px;
+    display: inline-flex;
+    position: relative;
+    background-color: #8C030E;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-top:0px;
+    margin-bottom:0px;
+    /* float: left; */
+}
+
+.textBackground{
+    position: absolute;
+    bottom:80px;
+    height:25px;
+    width:200px;
+    background-color: black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;   
+    opacity: 0.6;
+}
+
+.muscleList1{
+    position: relative;
+    bottom:55px;
+    right:80px;
+    display: inline-block;
+    text-align: left;
+}
+
+.Diana{
+    position: relative;
+    bottom:55px;
+    right:76px;
+    display: inline-block;
+    text-align: left;
+}
+
+.muscleList2{
+    position: relative;
+    bottom:55px;
+    right:50px;
+    display: inline-block;
+    text-align: left;
+}
+
+.Barry{
+    position: relative;
+    bottom:55px;
+    right:57px;
+    display: inline-block;
+    text-align: left;
+}
+
+.Clark{
+    position: relative;
+    bottom:55px;
+    right:39px;
+    display: inline-block;
+    text-align: left;
+}
+
+.Victor{
+    position: relative;
+    bottom:55px;
+    right:46px;
+    display: inline-block;
+    text-align: left;
+}
+
+.Mari{
+    position: relative;
+    bottom:55px;
+    right:44px;
+    display: inline-block;
+    text-align: left;
+}
+
+.muscleList3{
+    position: relative;
+    bottom:55px;
+    right:20px;
+    display: inline-block;
+    text-align: left;
+}
+
+.John{
+    position: relative;
+    bottom:55px;
+    right:31px;
+    display: inline-block;
+    text-align: left;
+}
+
+.Shayera{
+    position: relative;
+    bottom:55px;
+    right:25px;
+    display: inline-block;
+    text-align: left;
+}
+
+.Billy{
+    position: relative;
+    bottom:55px;
+    right:18px;
+    display: inline-block;
+    text-align: left;
+}

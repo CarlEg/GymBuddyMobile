@@ -1,0 +1,87 @@
+.Buddies{
+
+}
+
+.backArrow{
+    height: 25px;
+    width: 75px;
+    background-color: #8C030E;
+    border: 2px solid #6F6F6F;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px black;
+    position: relative;
+    bottom:75px;
+    margin-right:30px;
+    cursor: pointer;
+}
+
+.backArrow:hover{
+    background-color:#F25050;
+    cursor: pointer;
+}
+
+
+.backArrowGrey{
+    height: 25px;
+    width: 75px;
+    background-color: #6F6F6F;
+    border: 2px solid #6F6F6F;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px black;
+    position: relative;
+    bottom:75px;
+    margin-right:30px;
+}
+
+.forwardArrow{
+    height: 25px;
+    width: 75px;
+    background-color: #8C030E;
+    border: 2px solid #6F6F6F;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px black;
+    position: relative;
+    bottom:75px;
+    -webkit-transform: scaleX(-1);
+}
+
+.forwardArrow:hover{
+    background-color:#F25050;
+    cursor: pointer;
+}
+
+.forwardArrowGrey{
+    height: 25px;
+    width: 75px;
+    background-color: #6F6F6F;
+    border: 2px solid #6F6F6F;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px black;
+    position: relative;
+    bottom:75px;
+    -webkit-transform: scaleX(-1);
+}
+
+.tick{
+    height: 60px;
+    width: 60px;
+    position: relative;
+    bottom: 65px;
+    left: 22px;
+    border: 2px solid #8C030E;
+    border-radius:5px;
+    box-shadow: 0px 0px 1px black;
+    cursor: pointer;
+}
+
+.cross{
+    height: 60px;
+    width: 60px;
+    position: relative;
+    bottom: 65px;
+    right: 22px;
+    border: 2px solid #8C030E;
+    border-radius:5px;
+    box-shadow: 0px 0px 1px black;
+    cursor: pointer;
+}

@@ -180,12 +180,12 @@ export default function Muscles(props){
             {screen}
             <View style={styles.bottomButtons}>
             {<TouchableOpacity style={props.checkEmpty ? styles.presetGrey: styles.preset} 
-            onClick={props.checkEmpty ? null : props.savePreset} >
+            onPress={props.checkEmpty ? null : props.savePreset} >
             <Text style={props.checkEmpty ? styles.buttonTextGrey: styles.buttonTextWhite}>Save</Text>
             <Text style={props.checkEmpty ? styles.buttonTextGrey: styles.buttonTextWhite}>Muscles</Text>
             </TouchableOpacity>}
             {<TouchableOpacity style={props.checkEmpty ? styles.findGrey: styles.find} 
-            onClick={props.checkEmpty ? null : props.findClicked} >
+            onPress={props.checkEmpty ? null : props.findClicked} >
             <Text style={props.checkEmpty ? styles.buttonTextGrey: styles.buttonTextWhite}>Find</Text>
             <Text style={props.checkEmpty ? styles.buttonTextGrey: styles.buttonTextWhite}>Buddy</Text>
             </TouchableOpacity>}

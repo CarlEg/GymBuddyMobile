@@ -5,6 +5,8 @@ import Header from './components/header/header';
 import MuscleButton from './components/MuscleButton/MuscleButton';
 import Time from './components/Time/Time';
 import Muscles from './components/Muscles/Muscles'
+import Preset from './components/PresetButton/PresetButton'
+import PresetHeading from './components/PresetHeading/PresetHeading'
 
 
 export default class App extends Component {
@@ -320,6 +322,17 @@ export default class App extends Component {
             <MuscleButton
             muscleSelected={this.muscleSelected}/>
           </View>
+            <PresetHeading
+            isPresetEmpty={this.state.isPresetEmpty}/>
+          <View>
+            
+          </View>
+          <View style={styles.presetSection}>
+            <Preset
+              presets={this.state.presets}
+              isPresetEmpty={this.state.isPresetEmpty}
+              clicked={this.presetClicked} />
+          </View>  
 
           <View style={styles.navButtons}>
             <Footer
@@ -381,10 +394,13 @@ const styles = StyleSheet.create({
     justifyContent:'flex-end',
   },
   muscleButtonView:{
-    flex:1,
-    top:70
+    flex:1.5,
+    top:50
   },
   time:{
     top:15,
-  }
+  },
+  presetSection:{
+    flex:1,
+  },
 });

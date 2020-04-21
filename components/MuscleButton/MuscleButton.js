@@ -13,7 +13,6 @@ export default function MuscleButton(props){
         return <AppLoading />;
       } else {
     return(
-        
           <TouchableOpacity style={styles.muscleButton}
             onPress={props.muscleSelected}>
             <Text style={styles.muscleButtonText}>Choose{"\n"}Muscles</Text></TouchableOpacity>
